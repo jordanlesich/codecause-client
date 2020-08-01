@@ -1,36 +1,45 @@
 import React, { useState } from "react";
 import Layout from "./layout";
 import styled from "styled-components";
+
+// import Select from "../components/select";
 import Project from "./project";
-import { getColor, getFakeData } from "../helpers";
+import SearchInput from "../components/searchInput";
+
+import {
+  getColor,
+  getFakeData,
+  fakeSkillTags,
+  fakeProjectTags,
+  fakeCauseTags,
+} from "../helpers";
+import TagListing from "./tagListing";
 
 const ListingSpace = styled.div`
-  margin-top: 4vh;
+  margin-top: 2.5rem;
   display: flex;
   justify-content: flex-start;
+  align-items: flex-start;
   .listing-section {
     .listing-title {
-      font-size: calc(20px + 0.5vh + 1.5vw);
-      margin-bottom: 4vh;
+      font-size: 3rem;
+      margin-bottom: 2.5rem;
       font-weight: 300;
     }
   }
   .tag-section {
     margin-right: 6vw;
-    background-color: ${getColor("white")};
-
-    aside {
-      height: 20rem;
-      border-radius: 4px;
-      width: 10rem;
-      border: 1px solid ${getColor("lightBorder")};
-    }
+    background-color: ${getColor("lightgrey")};
+  }
+  .search-spacer {
+    display: inline-block;
+    margin: 1rem 0;
   }
 `;
 
 const ProjectsPage = () => {
   const [projects] = useState(getFakeData());
-
+  const [tagType, setTagType] = useState("skill");
   // useEffect(() => {
   //   const getProjects = async () => {
   //     const response = await fetch("/api/v1/projects", {
@@ -45,19 +54,46 @@ const ProjectsPage = () => {
 
   //   getProjects();
   // }, []);
-  console.log(projects);
+
+  const switchTagType = (e) => {
+    setTagType(e.target.value);
+  };
+
   return (
     <Layout>
       <ListingSpace>
         <section className="tag-section">
-          <aside className="worker-tags tags">
-            <p>Filter By Skill Set</p>
-            {/* WE'LL LIST OUT TAGS FOR EACH WORKER TYPE NEEDED HERE  */}
-          </aside>
-          <aside className="project-tags tags">
-            <p>Filter By Project Type</p>
-            {/* WE'LL LIST OUT TAGS FOR EACH PROJECT TYPE NEEDED HERE  */}
-          </aside>
+          <span className="search-spacer">
+            <SearchInput
+              width="14rem"
+              extendWidth="16rem"
+              textSize="1.2rem"
+              color={getColor("darkgrey")}
+              height="2.5rem"
+              border={`2px solid ${getColor("darkgrey")}`}
+            />
+          </span>
+          {tagType === "skill" && (
+            <TagListing
+              type={"skill"}
+              tags={fakeSkillTags}
+              switchTagType={switchTagType}
+            />
+          )}
+          {tagType === "project" && (
+            <TagListing
+              type={"project"}
+              tags={fakeProjectTags}
+              switchTagType={switchTagType}
+            />
+          )}
+          {tagType === "cause" && (
+            <TagListing
+              type={"cause"}
+              tags={fakeCauseTags}
+              switchTagType={switchTagType}
+            />
+          )}
         </section>
         <section className="listing-section">
           <h1 className="listing-title">{projects.length} Project Requests</h1>

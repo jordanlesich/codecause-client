@@ -1,49 +1,64 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
-import { Triangle } from "react-feather";
+import { Star } from "react-feather";
 import { getColor } from "../helpers";
 
 const VoteBox = styled.div`
   display: flex;
   padding: 0.25rem 0.5rem;
-  border: 1px solid ${getColor("lightBorder")};
+  border: 1px solid
+    ${(props) =>
+      props.isClicked ? getColor("successBorder") : getColor("lightBorder")};
   border-radius: 4px;
   transition: 0.15s all;
-  background-color: ${getColor("white")};
+  background-color: ${(props) =>
+    props.isClicked ? getColor("successHighlight") : getColor("white")};
+  cursor: pointer;
+  transition: 0.2s all;
 
-  .vote {
+  :hover {
+    background-color: ${(props) =>
+      props.isClicked ? getColor("successHighlight") : getColor("white")};
+    .vote-icon {
+      color: ${(props) =>
+        props.isClicked ? getColor("successDark") : getColor("secondary")};
+    }
+    .vote-text {
+      color: ${(props) =>
+        props.isClicked ? getColor("successDark") : getColor("secondary")};
+    }
+  }
+  .vote-icon {
     display: flex;
-    color: ${getColor("secondary")};
+    color: ${(props) =>
+      props.isClicked ? getColor("success") : getColor("secondary")};
     justify-content: center;
     align-items: center;
     height: 20px;
     width: 20px;
     margin: 0.125rem;
     padding: 2px;
-    border-radius: 50%;
-    border: 2px solid ${getColor("secondary")};
-    cursor: pointer;
     transition: 0.2s all;
   }
-  .vote:hover {
-    color: ${getColor("dark")};
-  }
-  .downvote {
-    transform: rotate(-180deg);
-  }
+
   .vote-text {
-    color: ${getColor("secondary")};
+    color: ${(props) =>
+      props.isClicked ? getColor("success") : getColor("secondary")};
     font-weight: 500;
     margin-left: 0.25rem;
+    transition: 0.2s all;
   }
 `;
 
-const Votes = () => {
+const Votes = ({ votes }) => {
+  const [isClicked, setIsClicked] = useState(false);
+
+  const toggleClicked = (e) => setIsClicked(!isClicked);
+
   return (
-    <VoteBox>
-      <Triangle className="upvote vote" />
-      <Triangle className="downvote vote" />
-      <p className="vote-text">0</p>
+    <VoteBox isClicked={isClicked} onClick={toggleClicked}>
+      <Star className={`vote-icon`} />
+      <p className="vote-text">{votes || "0"}</p>
     </VoteBox>
   );
 };
