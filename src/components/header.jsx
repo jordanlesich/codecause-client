@@ -1,9 +1,10 @@
 import React from "react";
 import styled from "styled-components";
+import { getColor } from "../helpers";
 
 const NavContainer = styled.nav`
   height: 6rem;
-  background-color: black;
+  background-color: ${getColor("dark")};
 `;
 
 const Header = () => {

@@ -2,27 +2,72 @@ import React from "react";
 import styled from "styled-components";
 import { getColor } from "../helpers";
 
-const BigOlButton = styled.button`
-  position: absolute;
-  top: 0;
-  right: 0;
-  margin: 1.25rem;
-  padding: 0.5rem 1.5rem;
-  border-radius: 4px;
+export const StyledButton = styled.button`
+  padding: 0.25rem 1rem;
+  border-radius: ${(props) => props.radius};
+  position: relative;
+  outline: none;
   font-weight: 500;
-  font-size: 1rem;
-  color: ${getColor("white")};
-  background-color: ${getColor("secondary")};
+  font-size: ${(props) => props.fontSize};
   cursor: pointer;
-  transition: 0.15s all;
+  transition: 0.2s all;
+  height: ${(props) => props.height};
+  width: ${(props) => props.width};
+  background-color: ${(props) => props.bgColor};
+  color: ${(props) => (props.selected ? props.bgColor : props.color)};
+  border: ${(props) => props.border};
+  :hover {
+    box-shadow: 5px 5px 3px -3px rgba(89, 89, 89, 0.3);
+  }
+  /* :focus {
+    box-shadow: 5px 5px 3px -3px rgba(89, 89, 89, 0.3);
+  } */
+  .button-bar-icon {
+    height: 40px;
+    width: 40px;
+  }
 
-  .project-tag:hover {
-    color: ${getColor("dark")};
+  & > * {
+    pointer-events: none;
+  }
+  &.open-button {
+    position: absolute;
+    top: 6rem;
+    left: 0;
+    grid-column: 3/4;
   }
 `;
 
-const Button = () => {
-  return <BigOlButton> {">"} </BigOlButton>;
+const Button = ({
+  className,
+  fn,
+  size,
+  content,
+  value,
+  height,
+  width,
+  bgColor,
+  color,
+  border,
+  radius,
+  selected,
+}) => {
+  return (
+    <StyledButton
+      onClick={fn}
+      value={value}
+      height={height || "2.5rem"}
+      width={width || "7rem"}
+      fontSize={"1.2rem"}
+      color={color || getColor("secondary")}
+      bgColor={bgColor || getColor("white")}
+      radius={radius || "4px"}
+      border={border || `1px solid ${getColor("lightBorder")}`}
+      className={`${selected && "selected"} ${className}`}
+    >
+      {content}
+    </StyledButton>
+  );
 };
 
 export default Button;

@@ -1,9 +1,9 @@
 import React from "react";
 import styled from "styled-components";
 import { formatDistanceToNow, parseISO } from "date-fns";
-import Tag from "../components/tag";
-import Avatar from "../components/avatar";
-import Votes from "../components/votes";
+import Tag from "./tag";
+import Avatar from "./avatar";
+import Votes from "./votes";
 
 import {
   getColor,
@@ -80,7 +80,7 @@ const ListItem = styled.li`
   }
 `;
 
-const Project = ({ project }) => {
+const ProjectListItem = ({ project }) => {
   return (
     <ListItem>
       <div className="posted-by-panel">
@@ -129,4 +129,4 @@ const Project = ({ project }) => {
   );
 };
 
-export default Project;
+export default ProjectListItem;

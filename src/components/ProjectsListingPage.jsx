@@ -2,9 +2,8 @@ import React, { useState } from "react";
 import Layout from "./layout";
 import styled from "styled-components";
 
-// import Select from "../components/select";
-import Project from "./project";
-import SearchInput from "../components/searchInput";
+import ProjectListItem from "./projectListItem";
+import SearchInput from "./searchInput";
 
 import {
   getColor,
@@ -16,6 +15,8 @@ import {
 import TagListing from "./tagListing";
 
 const ListingSpace = styled.div`
+  width: 1000px;
+  margin: 0 auto;
   margin-top: 2.5rem;
   display: flex;
   justify-content: flex-start;
@@ -40,20 +41,6 @@ const ListingSpace = styled.div`
 const ProjectsPage = () => {
   const [projects] = useState(getFakeData());
   const [tagType, setTagType] = useState("skill");
-  // useEffect(() => {
-  //   const getProjects = async () => {
-  //     const response = await fetch("/api/v1/projects", {
-  //       headers: {
-  //         "Content-Type": "application/json",
-  //         Accept: "application/json",
-  //       },
-  //     });
-  //     const json = await response.json();
-  //     setProjects(json);
-  //   };
-
-  //   getProjects();
-  // }, []);
 
   const switchTagType = (e) => {
     setTagType(e.target.value);
@@ -100,7 +87,7 @@ const ProjectsPage = () => {
           <ul>
             {projects &&
               projects.map((project) => {
-                return <Project project={project} key={project.id} />;
+                return <ProjectListItem project={project} key={project.id} />;
               })}
           </ul>
         </section>

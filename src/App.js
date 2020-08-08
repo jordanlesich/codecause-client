@@ -1,8 +1,10 @@
 import React from "react";
-import ProjectsPage from "./components/ProjectsPage";
+import ProjectPage from "./components/ProjectPage";
+import ProjectsListingPage from "./components/ProjectsListingPage";
 
 function App() {
-  return <ProjectsPage />;
+  return <ProjectPage />;
+  // return <ProjectsListingPage />;
 }
 
 export default App;
