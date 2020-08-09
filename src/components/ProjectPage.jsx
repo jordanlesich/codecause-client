@@ -1,19 +1,19 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import Layout from "./layout";
 import styled from "styled-components";
-import { formatDistanceToNow, parseISO } from "date-fns";
+// import { formatDistanceToNow, parseISO } from "date-fns";
 
-import Votes from "./votes";
-import Avatar from "./avatar";
-import Tag from "./tag";
-import Button from "./button";
+// import Votes from "./votes";
+// import Avatar from "./avatar";
+// import Tag from "./tag";
+// import Button from "./button";
 import ProjectBar from "./projectBar";
 import Drawer from "./drawer";
 import WhitePaper from "./whitePaper";
 // import SearchInput from "./searchInput";
 
-import { getColor } from "../helpers";
-import TagListing from "./tagListing";
+// import { getColor } from "../helpers";
+// import TagListing from "./tagListing";
 
 const StyledProjectPage = styled.div`
   /* position: relative; */

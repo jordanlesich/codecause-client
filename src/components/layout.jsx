@@ -1,5 +1,6 @@
-import React from "react";
-import Header from "../components/header";
+import React, { useState } from "react";
+import Header from "./header";
+import Modal from "./modal";
 import styled from "styled-components";
 import { getColor } from "../helpers";
 
@@ -10,9 +11,14 @@ const StyleTemplate = styled.main`
 `;
 
 const Layout = (props) => {
+  const [modal, setModal] = useState(true);
+
+  const toggleModal = () => setModal(!modal);
+
   return (
     <>
-      <Header />
+      {modal && <Modal toggleModal={toggleModal} />}
+      <Header toggleModal={toggleModal} />
       <StyleTemplate>{props.children}</StyleTemplate>
     </>
   );

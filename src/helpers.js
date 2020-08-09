@@ -1,5 +1,3 @@
-import { findAllByTitle } from "@testing-library/react";
-
 const randomIndex = (num) => Math.floor(Math.random() * num);
 const randomRange = ([min, max]) => randomIndex(max - min + 1) + min;
 const randomArrItem = (arr) => arr[randomIndex(arr.length)];

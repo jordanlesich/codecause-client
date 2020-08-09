@@ -75,7 +75,6 @@ const Drawer = ({ width }) => {
       />
 
       <SideBar anim={anim} width={width}>
-        {/* <div className="dark-underlay" /> */}
         <TabMenu
           closeDrawer={handleClick}
           options={[

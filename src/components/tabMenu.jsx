@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import styled from "styled-components";
-import { X, Menu } from "react-feather";
+import { X } from "react-feather";
 import Button from "./button";
 
 import { fadeIn, fadeOut } from "../anims";
@@ -68,11 +68,7 @@ background-color: ${getColor("white")};
     color: ${getColor("dark")};
     background-color: ${getColor("white")};
   }
-  .open-button{
-    position: fixed;
-    top: 0;
-    left: 0;
-  }
+  
 `;
 const TabMenu = ({ options, title, closeDrawer }) => {
   const [selectedOption, setSelectedOption] = useState(null);

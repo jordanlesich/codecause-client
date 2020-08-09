@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components";
+import Button from "./button";
 import { getColor } from "../helpers";
 
 const NavContainer = styled.nav`
@@ -7,8 +8,12 @@ const NavContainer = styled.nav`
   background-color: ${getColor("dark")};
 `;
 
-const Header = () => {
-  return <NavContainer></NavContainer>;
+const Header = ({ toggleModal }) => {
+  return (
+    <NavContainer>
+      <Button content="toggle" fn={toggleModal} />
+    </NavContainer>
+  );
 };
 
 export default Header;

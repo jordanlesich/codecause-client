@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import styled from "styled-components";
-import { getColor, getFakeQAs, getFakeTags } from "../helpers";
+import { getColor, getFakeQAs } from "../helpers";
 
 const Paper = styled.div`
   background-color: ${getColor("white")};
@@ -62,7 +62,7 @@ const Paper = styled.div`
 
 const WhitePaper = () => {
   const startingQAs = getFakeQAs();
-  const [QAs, setQAs] = useState(startingQAs);
+  const [QAs] = useState(startingQAs);
 
   console.log(QAs);
   return (
