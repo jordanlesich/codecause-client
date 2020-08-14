@@ -27,7 +27,6 @@ const Stepper = ({ toggleStepper }) => {
     steps,
     setSteps,
     step,
-
     currentFrame,
     next,
     prev,

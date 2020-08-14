@@ -48,26 +48,6 @@ background-color: ${getColor("white")};
   .closeButton {
     border-right: none;
   }
-  .tabButton {
-    transition: 0.2s;
-    border-bottom: none;
-    border-left: none;
-    border-bottom-left-radius: 0;
-    border-bottom-right-radius: 0;
-  }
-  .tabButton:hover {
-    background-color: #182533;
-    color: ${getColor("lightBorder")};
-    box-shadow: none;
-  }
-  .selected {
-    color: ${getColor("dark")};
-    background-color: ${getColor("white")};
-  }
-  .tabButton.selected:hover {
-    color: ${getColor("dark")};
-    background-color: ${getColor("white")};
-  }
   
 `;
 const TabMenu = ({ options, title, closeDrawer }) => {

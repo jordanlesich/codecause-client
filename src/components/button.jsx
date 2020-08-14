@@ -38,6 +38,25 @@ export const StyledButton = styled.button`
     left: 0;
     grid-column: 3/4;
   }
+  &.tabButton {
+    color: ${getColor("secondary")};
+    border-radius: 0;
+    box-shadow: none;
+    :hover {
+      background-color: #182533;
+      color: ${getColor("lightBorder")};
+      box-shadow: none;
+    }
+    .selected {
+      color: ${getColor("dark")};
+      background-color: ${getColor("white")};
+    }
+    .selected:hover {
+      color: ${getColor("dark")};
+      background-color: ${getColor("white")};
+    }
+  }
+
   &.stepper-tab-button {
     background-color: ${getColor("dark")};
     color: ${getColor("secondary")};
