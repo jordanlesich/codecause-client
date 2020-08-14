@@ -18,6 +18,11 @@ export const StyledButton = styled.button`
   :hover {
     box-shadow: 5px 5px 3px -3px rgba(89, 89, 89, 0.3);
   }
+  :focus {
+    box-shadow: 5px 5px 3px -3px rgba(89, 89, 89, 0.3);
+  }
+  :disabled {
+  }
 
   .button-bar-icon {
     height: 40px;
@@ -33,6 +38,52 @@ export const StyledButton = styled.button`
     left: 0;
     grid-column: 3/4;
   }
+  &.stepper-tab-button {
+    background-color: ${getColor("dark")};
+    color: ${getColor("secondary")};
+    border: 1px solid ${getColor("secondary")};
+    :hover:enabled {
+      background-color: #182533;
+      color: ${getColor("lightBorder")};
+      box-shadow: none;
+    }
+    :focus:enabled {
+      background-color: #182533;
+      color: ${getColor("lightBorder")};
+      box-shadow: none;
+    }
+    :disabled {
+      color: ${getColor("darkgrey")};
+      border: 1px solid ${getColor("darkgrey")};
+      box-shadow: none;
+    }
+  }
+  &.primary {
+    border: 1px solid ${getColor("primaryLight")};
+    background-color: ${getColor("primaryBG")};
+    color: ${getColor("primary")};
+    :hover {
+      background-color: ${getColor("primaryLight")};
+      border: 1px solid ${getColor("primaryMed")};
+    }
+    :focus {
+      background-color: ${getColor("primaryLight")};
+      border: 1px solid ${getColor("primaryMed")};
+    }
+  }
+  &.info {
+    border: 1px solid ${getColor("infoLight")};
+    background-color: ${getColor("infoBG")};
+    color: ${getColor("info")};
+    :hover {
+      background-color: ${getColor("infoLight")};
+      border: 1px solid ${getColor("infoMed")};
+    }
+    :focus {
+      background-color: ${getColor("infoLight")};
+      border: 1px solid ${getColor("infoMed")};
+    }
+  }
 `;
 
 const Button = ({
@@ -45,6 +96,7 @@ const Button = ({
   bgColor,
   color,
   border,
+  disabled,
   radius,
   selected,
   fontSize,
@@ -56,11 +108,12 @@ const Button = ({
       height={height || "2.5rem"}
       width={width || "7rem"}
       fontSize={fontSize || "1.2rem"}
-      color={color || getColor("secondary")}
+      color={color || getColor("dark")}
       bgColor={bgColor || getColor("white")}
       radius={radius || "4px"}
       border={border || `1px solid ${getColor("lightBorder")}`}
       className={`${selected && "selected"} ${className}`}
+      disabled={disabled}
     >
       {content}
     </StyledButton>

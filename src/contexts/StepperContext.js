@@ -38,7 +38,9 @@ export const StepperProvider = ({ children }) => {
   };
   const cannotMoveForward = () =>
     frame >= steps[step].frame.length - 1 && step >= steps.length - 1;
+
   const cannotMoveBackward = () => frame <= 0 && step <= 0;
+
   const next = () => {
     if (cannotMoveForward()) return;
     if (frame + 1 < currentStep.frame.length) {

@@ -50,24 +50,35 @@ export const getFakeTags = (arr, min, max) => {
   return newArr;
 };
 
+//TODO Make colors conform to https://styleguide.github.com/primer/support/color-system/
+
 export const getColor = (name) => {
   const palette = {
     white: "#ffffff",
     lightgrey: "#f6f8fa",
-    darkgrey: "#3d4248",
+    darkgrey: "#2f363d",
     dark: "#0c131a",
     lightBorder: "#e1e4e8",
     clearBorder: "#e1e4e8",
     font: "rgb(41,41,41)",
     success: "#2ea44f",
-    successLight: "#6dbf84",
-    successHighlight: "#eaf6ed",
-    successBorder: "#c0e4ca",
-    successDark: "#25833f",
+    //500
+    info: "#6f42c1",
+    //000
+    infoBG: "#f5f0ff",
+    //100
+    infoLight: "#e6dcfd",
+    //200
+    infoMed: "#d1bcf9",
     danger: "#d73a49",
-    primary: "#0070f3",
-    primaryLight: "#b3d5ff",
-    primaryMed: "#97c5ff",
+    //500
+    primary: "#0366d6",
+    //100
+    primaryBG: "#dbedff",
+    //200
+    primaryLight: "#c8e1ff",
+    //300
+    primaryMed: "#79b8ff",
     secondary: "#8d97a4",
   };
   return palette[name];

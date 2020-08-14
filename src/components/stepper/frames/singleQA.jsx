@@ -2,7 +2,7 @@ import React, { useContext } from "react";
 import { StepperContext } from "../../../contexts/StepperContext";
 import InputFactory from "../factories/inputFactory";
 import Button from "../../button";
-import { getColor } from "../../../helpers";
+import Help from "../help";
 import styled from "styled-components";
 import { Title, SubTitle, Label } from "./elements";
 
@@ -21,18 +21,18 @@ const StyledQA = styled.form`
     bottom: 4rem;
     right: 0;
   }
+  .QA-help {
+    position: absolute;
+    bottom: 4rem;
+    left: 0;
+  }
 `;
 
-const SingleQA = ({ subTitle, question, details, input, tag, title }) => {
-  // const [userInput, setUserInput] = useState("");
+const SingleQA = ({ subTitle, question, details, input, tag, title, help }) => {
   const { temporaryVals, saveInput, addData } = useContext(StepperContext);
   const relevantValue = temporaryVals[tag];
-  // const checkValidation = () => {
-  //   //run e against a regex match function
-  // };
   const handleTyping = (e) => {
     saveInput(tag, e.target.value);
-    // setCanSubmit(checkValidation(e.target.value));
   };
   const submitData = () => {
     addData(relevantValue);
@@ -59,14 +59,12 @@ const SingleQA = ({ subTitle, question, details, input, tag, title }) => {
           value: relevantValue,
         }}
       />
+      <Help helpText={help} className="QA-help" />
       <Button
         content="Submit"
         height="3rem"
         width="10rem"
-        className="submit-button"
-        border={`1px solid ${getColor("primaryMed")}`}
-        bgColor={getColor("primaryLight")}
-        color={getColor("primary")}
+        className="submit-button primary"
         fn={submitData}
       />
     </StyledQA>

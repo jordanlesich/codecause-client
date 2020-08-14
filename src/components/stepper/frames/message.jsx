@@ -2,7 +2,7 @@ import React, { useContext } from "react";
 import { StepperContext } from "../../../contexts/StepperContext";
 import styled from "styled-components";
 import { Title, SubTitle } from "./elements";
-import { getColor } from "../../../helpers";
+
 import Button from "../../button";
 const MessageFrame = styled.div`
   position: relative;
@@ -48,10 +48,7 @@ const Message = ({ title, subTitle, body }) => {
         content="Continue"
         height="3rem"
         width="10rem"
-        className="next-button"
-        border={`1px solid ${getColor("primaryMed")}`}
-        bgColor={getColor("primaryLight")}
-        color={getColor("primary")}
+        className="next-button primary"
         fn={next}
       />
     </MessageFrame>

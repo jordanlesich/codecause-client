@@ -21,7 +21,6 @@ const getFrame = ({
   question,
   addData,
   input,
-  response,
   validation,
   help,
   tag,

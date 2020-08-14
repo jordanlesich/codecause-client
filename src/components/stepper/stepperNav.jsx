@@ -4,7 +4,6 @@ import styled from "styled-components";
 import { ChevronLeft, ChevronRight } from "react-feather";
 import StepperMap from "./stepperMap";
 import Button from "../button";
-// import Help from "./help";
 import { getColor } from "../../helpers";
 
 const StyledStepperController = styled.div`
@@ -46,19 +45,19 @@ const StyledStepperController = styled.div`
   }
 `;
 
-const StepperController = ({ next, prev, help, tag }) => {
+const StepperController = ({ next, prev, exit, tag }) => {
   const {
     temporaryVals,
     addData,
-    currentStep,
-    currentFrame,
+
     steps,
     step,
     cannotMoveForward,
     cannotMoveBackward,
   } = useContext(StepperContext);
 
-  const completeStep = () => {
+  const completeStep = (e) => {
+    e.preventDefault();
     addData(tag, temporaryVals[tag]);
     next();
   };
@@ -70,21 +69,17 @@ const StepperController = ({ next, prev, help, tag }) => {
           content={<ChevronLeft size="2rem" />}
           fn={prev}
           disabled={cannotMoveBackward()}
-          className="tabButton"
+          className="stepper-tab-button"
           height="3rem"
           width={`30%`}
-          bgColor={getColor("dark")}
-          border={`1px solid ${getColor("secondary")}`}
         />
         <Button
           content={<ChevronRight size="2rem" />}
           fn={next}
           disabled={cannotMoveForward()}
-          className="tabButton"
+          className="stepper-tab-button"
           height="3rem"
           width={`30%`}
-          bgColor={getColor("dark")}
-          border={`1px solid ${getColor("secondary")}`}
         />
       </div>
       <div className="step-indicator">
@@ -102,30 +97,17 @@ const StepperController = ({ next, prev, help, tag }) => {
           content="Submit Form"
           fontSize={"1.2rem"}
           fn={completeStep}
-          disabled={
-            temporaryVals[tag] === "" ||
-            currentStep.completed ||
-            currentFrame.type === "message"
-          }
-          className="tabButton"
+          disabled={true}
+          className="stepper-tab-button"
           width={`100%`}
-          bgColor={getColor("dark")}
-          border={`1px solid ${getColor("secondary")}`}
         />
         <Button
           height="3rem"
           content="Exit"
           fontSize={"1.2rem"}
-          fn={completeStep}
-          disabled={
-            temporaryVals[tag] === "" ||
-            currentStep.completed ||
-            currentFrame.type === "message"
-          }
-          className="tabButton"
+          fn={exit}
+          className="stepper-tab-button"
           width={`100%`}
-          bgColor={getColor("dark")}
-          border={`1px solid ${getColor("secondary")}`}
         />
       </div>
     </StyledStepperController>
