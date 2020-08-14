@@ -3,7 +3,6 @@ import styled from "styled-components";
 import { getColor } from "../helpers";
 
 export const StyledButton = styled.button`
-  padding: 0.25rem 1rem;
   border-radius: ${(props) => props.radius};
   position: relative;
   outline: none;
@@ -19,9 +18,7 @@ export const StyledButton = styled.button`
   :hover {
     box-shadow: 5px 5px 3px -3px rgba(89, 89, 89, 0.3);
   }
-  /* :focus {
-    box-shadow: 5px 5px 3px -3px rgba(89, 89, 89, 0.3);
-  } */
+
   .button-bar-icon {
     height: 40px;
     width: 40px;
@@ -50,6 +47,7 @@ const Button = ({
   border,
   radius,
   selected,
+  fontSize,
 }) => {
   return (
     <StyledButton
@@ -57,7 +55,7 @@ const Button = ({
       value={value}
       height={height || "2.5rem"}
       width={width || "7rem"}
-      fontSize={"1.2rem"}
+      fontSize={fontSize || "1.2rem"}
       color={color || getColor("secondary")}
       bgColor={bgColor || getColor("white")}
       radius={radius || "4px"}

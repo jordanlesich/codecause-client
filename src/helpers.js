@@ -58,6 +58,7 @@ export const getColor = (name) => {
     dark: "#0c131a",
     lightBorder: "#e1e4e8",
     clearBorder: "#e1e4e8",
+    font: "rgb(41,41,41)",
     success: "#2ea44f",
     successLight: "#6dbf84",
     successHighlight: "#eaf6ed",
@@ -65,6 +66,8 @@ export const getColor = (name) => {
     successDark: "#25833f",
     danger: "#d73a49",
     primary: "#0070f3",
+    primaryLight: "#b3d5ff",
+    primaryMed: "#97c5ff",
     secondary: "#8d97a4",
   };
   return palette[name];
@@ -213,4 +216,54 @@ export const getFakeQAs = () => {
       type: "sub-section",
     },
   ];
+};
+
+export const instructions = [
+  {
+    step: 0,
+    tag: "Q0",
+    frame: [
+      {
+        type: "message",
+        title: "Starting a Project on Code Cause",
+        subTitle: "Here's what you need to know",
+        body: {
+          type: "list",
+          strings: [
+            "Code Cause is a community of builders and creators",
+            "Creators post open source projects ideas to CodeCause",
+            "Builders (developers, designers, etc) search for projects that inspire them and join up",
+            "Together they work on the project through stages until it's completed",
+            "(Future Idea)",
+            "Creators and Builders gain karma for finished work",
+            "Karma is used to upvote projects to the top of the listing",
+            "Also, the more karma attatched to a project, the more people gain by finishing it",
+          ],
+        },
+      },
+      {
+        type: "singleQA",
+        title: "Tell us a bit about your project idea",
+        question: "Try to sum it up in one sentence.",
+        tag: "Q0",
+        subText: "Try it out.",
+        help:
+          "This adds additional text to help. It can be expressed in the JSON file",
+        input: {
+          type: "textBox",
+          validation: [
+            { type: "not-empty", response: "Please type in a response" },
+          ],
+        },
+      },
+    ],
+  },
+];
+export const mapTagsToObject = (data) => {
+  //TODO make functionality for MultiQuestion frames
+  let obj = {};
+  for (let i = 0; i < data.length; i++) {
+    obj[data[i].tag] = "";
+  }
+  return obj;
 };

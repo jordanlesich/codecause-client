@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import Header from "./header";
+import Stepper from "./stepper/stepper";
 import Modal from "./modal";
 import styled from "styled-components";
 import { getColor } from "../helpers";
@@ -11,14 +12,16 @@ const StyleTemplate = styled.main`
 `;
 
 const Layout = (props) => {
-  const [modal, setModal] = useState(true);
+  const [modal, setModal] = useState(false);
+  const [stepper, setStepper] = useState(true);
 
   const toggleModal = () => setModal(!modal);
-
+  const toggleStepper = () => setStepper(!stepper);
   return (
     <>
       {modal && <Modal toggleModal={toggleModal} />}
-      <Header toggleModal={toggleModal} />
+      {stepper && <Stepper toggleStepper={toggleStepper} />}
+      <Header toggleModal={toggleModal} toggleStepper={toggleStepper} />
       <StyleTemplate>{props.children}</StyleTemplate>
     </>
   );

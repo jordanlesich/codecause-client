@@ -8,10 +8,11 @@ const NavContainer = styled.nav`
   background-color: ${getColor("dark")};
 `;
 
-const Header = ({ toggleModal }) => {
+const Header = ({ toggleModal, toggleStepper }) => {
   return (
     <NavContainer>
       <Button content="toggle" fn={toggleModal} />
+      <Button content="Stepper" fn={toggleStepper} />
     </NavContainer>
   );
 };
