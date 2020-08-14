@@ -42,16 +42,18 @@ export const StyledButton = styled.button`
     color: ${getColor("secondary")};
     border-radius: 0;
     box-shadow: none;
+    border-bottom: none;
+    border-left: none;
     :hover {
       background-color: #182533;
       color: ${getColor("lightBorder")};
       box-shadow: none;
     }
-    .selected {
+    &.selected {
       color: ${getColor("dark")};
       background-color: ${getColor("white")};
     }
-    .selected:hover {
+    &.selected:hover {
       color: ${getColor("dark")};
       background-color: ${getColor("white")};
     }
