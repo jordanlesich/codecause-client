@@ -4,15 +4,11 @@ import InputFactory from "../factories/inputFactory";
 import Button from "../../button";
 import Help from "../help";
 import styled from "styled-components";
-import { Title, SubTitle, Label } from "./elements";
+import { Title, SubTitle, Label, Details } from "./elements";
 
 const StyledQA = styled.form`
   position: relative;
   height: 100%;
-  .QA-details {
-    margin-bottom: 5vh;
-    margin-left: 2rem;
-  }
   .QA-input {
     margin-left: 2rem;
   }
@@ -29,30 +25,33 @@ const StyledQA = styled.form`
 `;
 
 const SingleQA = ({ subTitle, question, details, input, tag, title, help }) => {
-  const { temporaryVals, saveInput, addData } = useContext(StepperContext);
+  const { temporaryVals, saveInput, addData, next } = useContext(
+    StepperContext
+  );
   const relevantValue = temporaryVals[tag];
   const handleTyping = (e) => {
     saveInput(tag, e.target.value);
   };
-  const submitData = () => {
-    addData(relevantValue);
+  const completeStep = (e) => {
+    e.preventDefault();
+    addData(tag, temporaryVals[tag]);
+    next();
   };
 
   return (
-    <StyledQA onSubmit={submitData}>
+    <StyledQA onSubmit={completeStep}>
       <Title>{title}</Title>
       {subTitle && <SubTitle>{subTitle}</SubTitle>}
       <Label htmlFor={tag} className="QA-label">
         {question}
       </Label>
-      {details && (
-        <p details={details} htmlFor={question} className="QA-details" />
-      )}
+      {details && <Details details={details}>{details}</Details>}
 
       <InputFactory
         input={{
           ...input,
           fn: handleTyping,
+          id: tag,
           tag: tag,
           className: "QA-input",
           placeholder: "Type here",
@@ -65,7 +64,8 @@ const SingleQA = ({ subTitle, question, details, input, tag, title, help }) => {
         height="3rem"
         width="10rem"
         className="submit-button primary"
-        fn={submitData}
+        fn={completeStep}
+        disabled={relevantValue === ""}
       />
     </StyledQA>
   );

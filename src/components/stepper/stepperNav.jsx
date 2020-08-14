@@ -49,7 +49,6 @@ const StepperController = ({ next, prev, exit, tag }) => {
   const {
     temporaryVals,
     addData,
-
     steps,
     step,
     cannotMoveForward,

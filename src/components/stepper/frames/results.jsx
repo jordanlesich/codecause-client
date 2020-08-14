@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
 import { StepperContext } from "../../../contexts/StepperContext";
 import styled from "styled-components";
-import { Title, SubTitle } from "./elements";
+import { Title, SubTitle, Details } from "./elements";
 
 import Button from "../../button";
 const MessageFrame = styled.div`
@@ -23,32 +23,26 @@ const MessageFrame = styled.div`
   }
 `;
 
-const Message = ({ title, subTitle, body }) => {
-  const { next } = useContext(StepperContext);
+const Message = ({ title }) => {
+  const { steps } = useContext(StepperContext);
   return (
     <MessageFrame>
       <Title>{title}</Title>
-      {subTitle && <SubTitle>{subTitle} </SubTitle>}
-      {body && (
-        <div className="body-text">
-          {body.type === "list" ? (
-            <ul className="list">
-              {body.strings.map((str, i) => (
-                <li key={i}>{str}</li>
-              ))}
-            </ul>
-          ) : (
-            body.strings.map((str, i) => <p key={i}>{str}</p>)
-          )}
-        </div>
-      )}
+      {/* {steps.map((step, i) => {
+        return (
+          <div key={i}>
+            <SubTitle>{step.question}</SubTitle>
+            <Details>{step.answer}</Details>
+          </div>
+        );
+      })} */}
 
       <Button
-        content="Continue"
+        content="(Dummy)"
         height="3rem"
         width="10rem"
         className="next-button primary"
-        fn={next}
+        fn=""
       />
     </MessageFrame>
   );

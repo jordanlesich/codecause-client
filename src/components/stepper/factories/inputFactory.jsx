@@ -15,6 +15,7 @@ const GetInput = ({
   const inputs = {
     textInput: (
       <TextInput
+        id={id}
         value={value}
         fn={fn}
         placeholder={placeholder}
@@ -24,6 +25,7 @@ const GetInput = ({
     ),
     textBox: (
       <TextBox
+        id={id}
         value={value}
         fn={fn}
         placeholder={placeholder}

@@ -13,3 +13,8 @@ export const SubTitle = styled.p`
   margin-left: 1.5rem;
 `;
 export const Label = styled(SubTitle)``;
+export const Details = styled.p`
+  margin-left: 2rem;
+  font-weight: 300;
+  margin-bottom: 0.5rem;
+`;

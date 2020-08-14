@@ -73,6 +73,7 @@ export const getColor = (name) => {
     danger: "#d73a49",
     //500
     primary: "#0366d6",
+
     //100
     primaryBG: "#dbedff",
     //200
@@ -254,18 +255,60 @@ export const instructions = [
       },
       {
         type: "singleQA",
-        title: "Tell us a bit about your project idea",
-        question: "Try to sum it up in one sentence.",
+        title: "Tell us About your Project Idea",
+        question: "What's the elevator pitch?",
         tag: "Q0",
-        subText: "Try it out.",
+        details:
+          "Try to sum the project up in one sentence. If you can't, odds are the idea is too complex and needs to be refined. Take your time to get to the core of what your project is. ",
         help:
-          "This adds additional text to help. It can be expressed in the JSON file",
+          "An elevator pitch is a one-liner pitch that describes your idea in a hurry, as if you were trying to explain your idea to someone important while sharing an elevator ride.",
         input: {
           type: "textBox",
           validation: [
             { type: "not-empty", response: "Please type in a response" },
           ],
         },
+      },
+    ],
+  },
+  {
+    step: 1,
+    tag: "Q1",
+    frame: [
+      {
+        type: "message",
+        title: "Sounds Great!",
+        subTitle: "Here's a few things to consider before sharing your idea.",
+        body: {
+          type: "list",
+          strings: [
+            "Code Cause is generally for non-profit/open source projects.",
+            "While for-profits are welcome, we currently have no way of enforcing or arbitrating agreements.",
+            "When you post your project idea to the world, it's out there, and anyone can now use it.",
+            "Which means Code Cause is better suited (at the moment) for projects that need to be made for some altruistic benefit as opossed to starting a business.",
+            "The best projects have creators that bring energy, creativity, and a solid vision to the table.",
+            "So make sure you have enough time to direct the project from begininning to completion",
+            "And remember that the best form of leadership is from those who lead from the front. Be ready to help your team in any way you can.",
+          ],
+        },
+      },
+      {
+        type: "singleQA",
+        title: "The Problem",
+        question: "What problem is your project going to solve.",
+        details:
+          "Give some detail, but don't go longer than a paragraph. We can get into the hard details later.",
+        tag: "Q1",
+        input: {
+          type: "textBox",
+          validation: [
+            { type: "not-empty", response: "Please type in a response" },
+          ],
+        },
+      },
+      {
+        type: "results",
+        title: "Results",
       },
     ],
   },

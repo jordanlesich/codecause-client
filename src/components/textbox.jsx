@@ -28,8 +28,8 @@ const StyledTextBox = styled.textarea`
     outline: none;
     background-color: ${getColor("white")};
   }
-  .completed {
-    background-color: ${getColor("secondary")};
+  :disabled {
+    background-color: ${getColor("lightBorder")};
   }
 `;
 
@@ -64,7 +64,7 @@ const TextBox = ({
       placeholder={placeholder || "Placeholder text"}
       className={`${className} ${currentStep.completed && "completed"}`}
       value={value}
-      disabled={false}
+      disabled={currentStep.completed}
     />
   );
 };

@@ -1,6 +1,7 @@
 import React from "react";
 import Message from "../frames/message";
 import SingleQA from "../frames/singleQA";
+import Results from "../frames/results";
 import styled from "styled-components";
 import { getColor } from "../../../helpers";
 
@@ -12,9 +13,12 @@ const StyledFrame = styled.div`
   margin-top: 4rem;
   padding: 2rem 2rem 0 2rem;
 `;
-
+//TODO: Frames should recieve all these props from context.
+//Move all these props out of this component, and get the components
+//to grab the props from the currentFrame objext in context.
 const getFrame = ({
   type,
+  details,
   title,
   subTitle,
   body,
@@ -27,11 +31,13 @@ const getFrame = ({
 }) => {
   const frame = {
     message: <Message title={title} subTitle={subTitle} body={body} />,
+    results: <Results title={title} />,
     singleQA: (
       <SingleQA
         addData={addData}
         question={question}
         title={title}
+        details={details}
         subTitle={subTitle}
         input={input}
         validation={validation}

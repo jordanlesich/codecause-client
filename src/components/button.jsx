@@ -83,26 +83,38 @@ export const StyledButton = styled.button`
     border: 1px solid ${getColor("primaryLight")};
     background-color: ${getColor("primaryBG")};
     color: ${getColor("primary")};
-    :hover {
+    :hover:enabled {
       background-color: ${getColor("primaryLight")};
       border: 1px solid ${getColor("primaryMed")};
     }
-    :focus {
+    :focus:enabled {
       background-color: ${getColor("primaryLight")};
       border: 1px solid ${getColor("primaryMed")};
+    }
+    :disabled {
+      background-color: ${getColor("white")};
+      border: 1px solid ${getColor("lightBorder")};
+      color: ${getColor("secondary")};
+      box-shadow: none;
     }
   }
   &.info {
     border: 1px solid ${getColor("infoLight")};
     background-color: ${getColor("infoBG")};
     color: ${getColor("info")};
-    :hover {
+    :hover:enabled {
       background-color: ${getColor("infoLight")};
       border: 1px solid ${getColor("infoMed")};
     }
-    :focus {
+    :focus:enabled {
       background-color: ${getColor("infoLight")};
       border: 1px solid ${getColor("infoMed")};
+    }
+    :disabled {
+      background-color: ${getColor("white")};
+      border: 1px solid ${getColor("lightBorder")};
+      color: ${getColor("secondary")};
+      box-shadow: none;
     }
   }
 `;
